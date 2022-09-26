@@ -11,6 +11,8 @@
 		8B0B4E1028E2296600AF1C28 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0B4E0F28E2296600AF1C28 /* ContentView.swift */; };
 		8B0B4E1228E2296700AF1C28 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B0B4E1128E2296700AF1C28 /* Assets.xcassets */; };
 		8B0B4E1628E2296700AF1C28 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B0B4E1528E2296700AF1C28 /* Preview Assets.xcassets */; };
+		8B12CE1928E239030009A0AA /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B12CE1828E239030009A0AA /* HomeView.swift */; };
+		8B12CE1B28E2394F0009A0AA /* UberMapViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B12CE1A28E2394F0009A0AA /* UberMapViewRepresentable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +22,8 @@
 		8B0B4E1128E2296700AF1C28 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8B0B4E1328E2296700AF1C28 /* Uber_SwifUI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Uber_SwifUI.entitlements; sourceTree = "<group>"; };
 		8B0B4E1528E2296700AF1C28 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		8B12CE1828E239030009A0AA /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		8B12CE1A28E2394F0009A0AA /* UberMapViewRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UberMapViewRepresentable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +56,11 @@
 		8B0B4E0C28E2296500AF1C28 /* Uber-SwifUI */ = {
 			isa = PBXGroup;
 			children = (
+				8B12CE1528E238E50009A0AA /* Models */,
+				8B12CE1428E238E00009A0AA /* Managers */,
+				8B12CE1328E238DA0009A0AA /* Extensions */,
+				8B12CE1228E238D40009A0AA /* Core */,
+				8B12CE1128E238D00009A0AA /* App */,
 				8B0B4E0D28E2296500AF1C28 /* Uber_SwifUIApp.swift */,
 				8B0B4E0F28E2296600AF1C28 /* ContentView.swift */,
 				8B0B4E1128E2296700AF1C28 /* Assets.xcassets */,
@@ -67,6 +76,59 @@
 				8B0B4E1528E2296700AF1C28 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		8B12CE1128E238D00009A0AA /* App */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		8B12CE1228E238D40009A0AA /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				8B12CE1728E238F40009A0AA /* Views */,
+				8B12CE1628E238EE0009A0AA /* ViewModel */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		8B12CE1328E238DA0009A0AA /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		8B12CE1428E238E00009A0AA /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		8B12CE1528E238E50009A0AA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		8B12CE1628E238EE0009A0AA /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		8B12CE1728E238F40009A0AA /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8B12CE1828E239030009A0AA /* HomeView.swift */,
+				8B12CE1A28E2394F0009A0AA /* UberMapViewRepresentable.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,6 +201,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B12CE1B28E2394F0009A0AA /* UberMapViewRepresentable.swift in Sources */,
+				8B12CE1928E239030009A0AA /* HomeView.swift in Sources */,
 				8B0B4E1028E2296600AF1C28 /* ContentView.swift in Sources */,
 				8B0B4E0E28E2296500AF1C28 /* Uber_SwifUIApp.swift in Sources */,
 			);
