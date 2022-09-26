@@ -13,6 +13,7 @@
 		8B0B4E1628E2296700AF1C28 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B0B4E1528E2296700AF1C28 /* Preview Assets.xcassets */; };
 		8B12CE1928E239030009A0AA /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B12CE1828E239030009A0AA /* HomeView.swift */; };
 		8B12CE1B28E2394F0009A0AA /* UberMapViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B12CE1A28E2394F0009A0AA /* UberMapViewRepresentable.swift */; };
+		8B12CE1D28E23AD00009A0AA /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B12CE1C28E23AD00009A0AA /* LocationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		8B0B4E1528E2296700AF1C28 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		8B12CE1828E239030009A0AA /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		8B12CE1A28E2394F0009A0AA /* UberMapViewRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UberMapViewRepresentable.swift; sourceTree = "<group>"; };
+		8B12CE1C28E23AD00009A0AA /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 		8B12CE1428E238E00009A0AA /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				8B12CE1C28E23AD00009A0AA /* LocationManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -203,6 +206,7 @@
 			files = (
 				8B12CE1B28E2394F0009A0AA /* UberMapViewRepresentable.swift in Sources */,
 				8B12CE1928E239030009A0AA /* HomeView.swift in Sources */,
+				8B12CE1D28E23AD00009A0AA /* LocationManager.swift in Sources */,
 				8B0B4E1028E2296600AF1C28 /* ContentView.swift in Sources */,
 				8B0B4E0E28E2296500AF1C28 /* Uber_SwifUIApp.swift in Sources */,
 			);
@@ -333,6 +337,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Please Allow Us to use your current location";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -371,6 +376,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Please Allow Us to use your current location";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
