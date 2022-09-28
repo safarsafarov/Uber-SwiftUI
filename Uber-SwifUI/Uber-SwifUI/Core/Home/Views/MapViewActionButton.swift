@@ -2,16 +2,19 @@
 //  MapViewActionButton.swift
 //  Uber-SwifUI
 //
-//  Created by Safar Safarov on 27/09/22.
+//  Created by Safar Safarov on 28/09/22.
 //
 
 import SwiftUI
 
 struct MapViewActionButton: View {
     @Binding var showLocationSearchView: Bool
+    
     var body: some View {
         Button {
-            showLocationSearchView.toggle()
+            withAnimation(.spring()) {
+                showLocationSearchView.toggle()
+            }
         } label: {
             Image(systemName: showLocationSearchView ? "arrow.left" : "line.3.horizontal")
                 .font(.title2)
