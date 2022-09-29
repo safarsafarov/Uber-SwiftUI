@@ -64,7 +64,6 @@ extension UberMapViewRepresentable {
             parent.mapView.setRegion(region, animated: true)
         }
         
-        // MARK: MapView
         
         func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) ->
         MKOverlayRenderer {
