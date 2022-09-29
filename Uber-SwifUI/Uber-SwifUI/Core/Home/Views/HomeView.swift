@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     @State private var showLocationSearchView = false
+    @State private var mapState = MapViewState.noInput
     var body: some View {
         ZStack(alignment: .top) {
             UberMapViewRepresentable()
