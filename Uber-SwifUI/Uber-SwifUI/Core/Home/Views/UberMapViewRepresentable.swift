@@ -53,7 +53,7 @@ extension UberMapViewRepresentable {
             super.init()
         }
         
-        // MARK: - MKMapView Delegate
+        // MARK: - MKMapViewDelegate
         
         func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
             self.userLocationCoordinate = userLocation.coordinate
@@ -61,6 +61,16 @@ extension UberMapViewRepresentable {
                 center: CLLocationCoordinate2D(latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude), span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05))
             
             parent.mapView.setRegion(region, animated: true)
+        }
+        
+        // MARK: MapView
+        
+        func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) ->
+        MKOverlayRenderer {
+            let polyline = MKPolylineRenderer(overlay: overlay)
+            polyline.strokeColor = .systemBlue
+            polyline.lineWidth = 6
+            return polyline
         }
         
         // MARK: - Helpers
