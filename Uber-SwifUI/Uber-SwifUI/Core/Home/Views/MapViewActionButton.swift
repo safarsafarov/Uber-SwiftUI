@@ -16,7 +16,7 @@ struct MapViewActionButton: View {
                 actionForState(mapState)
             }
         } label: {
-            Image(systemName: showLocationSearchView ? "arrow.left" : "line.3.horizontal")
+            Image(systemName: imageNameForState(mapState))
                 .font(.title2)
                 .foregroundColor(.black)
                 .padding()
@@ -41,9 +41,11 @@ struct MapViewActionButton: View {
     func imageNameForState(_ state: MapViewState) {
         switch state {
         case .noInput:
-            return "line.3.horizontal"
-        case .searchingForLocation, .locationSelected:
-            print("DEBUG: Clear Map View...")
+            print("DEBUG: No input")
+        case .searchingForLocation:
+            mapState = .noInput
+        case .locationSelected:
+            print("DEBUG: Clear map view...")
         }
     }
 }
