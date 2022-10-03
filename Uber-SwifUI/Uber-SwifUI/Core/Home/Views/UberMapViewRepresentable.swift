@@ -14,8 +14,7 @@ struct UberMapViewRepresentable: UIViewRepresentable {
     
     let mapView = MKMapView()
     let locationManager = LocationManager()
-    
-    
+    @Binding var mapState: MapViewState
     @EnvironmentObject var locationViewModel: LocationSearchViewModel
     
     func makeUIView(context: Context) -> some UIView {
@@ -27,6 +26,7 @@ struct UberMapViewRepresentable: UIViewRepresentable {
     }
     
     func updateUIView(_ uiView: UIViewType, context: Context) {
+        print("DEBUG: Map State is \(mapState)")
         if let coordinate = locationViewModel.selectedLocationCoordinate {
             context.coordinator.addAndSelectAnnotation(withCoordinate: coordinate)
             context.coordinator.configurePolyline(withDestinationCoordinate: coordinate)
@@ -108,6 +108,11 @@ extension UberMapViewRepresentable {
                 guard let route = response?.routes.first else { return }
                 completion(route)
             }
+        }
+        
+        func clearMapView() {
+            parent.mapView.removeAnnotation(parent.mapView.annotations))
+            parent.mapView.removeOverlay(parent.mapView.overlays)
         }
     }
 }
