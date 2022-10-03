@@ -38,14 +38,12 @@ struct MapViewActionButton: View {
         }
     }
     
-    func imageNameForState(_ state: MapViewState) {
+    func imageNameForState(_ state: MapViewState) -> String {
         switch state {
         case .noInput:
-            print("DEBUG: No input")
-        case .searchingForLocation:
-            mapState = .noInput
-        case .locationSelected:
-            print("DEBUG: Clear map view...")
+            return "line.3.horizontal"
+        case .searchingForLocation, .locationSelected:
+            return "arrow.left"
         }
     }
 }
