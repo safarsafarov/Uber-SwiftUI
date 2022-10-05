@@ -111,8 +111,8 @@ extension UberMapViewRepresentable {
         }
         
         func clearMapView() {
-            parent.mapView.removeAnnotation(parent.mapView.annotations))
-            parent.mapView.removeOverlay(parent.mapView.overlays)
+//            parent.mapView.removeAnnotation(parent.mapView.annotations)) 
+//            parent.mapView.removeOverlay(parent.mapView.overlays)
         }
     }
 }
