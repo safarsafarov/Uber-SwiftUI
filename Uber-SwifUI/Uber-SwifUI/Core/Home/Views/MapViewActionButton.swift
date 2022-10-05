@@ -30,11 +30,11 @@ struct MapViewActionButton: View {
     func actionForState(_ state: MapViewState) {
         switch state {
         case .noInput:
-            print("DEBUG: No Input")
+            print("DEBUG: No input")
         case .searchingForLocation:
             mapState = .noInput
         case .locationSelected:
-            print("DEBUG: Clear Map View...")
+            mapState = .noInput
         }
     }
     

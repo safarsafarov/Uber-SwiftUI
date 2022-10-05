@@ -10,6 +10,7 @@ import SwiftUI
 struct HomeView: View {
     @State private var mapState = MapViewState.noInput
     
+    
     var body: some View {
         ZStack(alignment: .top) {
             UberMapViewRepresentable(mapState: $mapState)
