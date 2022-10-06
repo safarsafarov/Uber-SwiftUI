@@ -13,8 +13,8 @@ struct RideRequestView: View {
             Capsule()
                 .foregroundColor(Color(.systemGray5))
                 .frame(width: 48, height: 6)
-            // Trip info view
             
+            // Trip info view
             HStack {
                 VStack {
                     Circle()
@@ -54,6 +54,29 @@ struct RideRequestView: View {
                         Text("1:45 PM")
                             .font(.system(size: 14, weight: .semibold))
                             .foregroundColor(.gray)
+                    }
+                }
+                .padding(.leading, 8)
+            }
+            .padding()
+            
+            
+            Divider()
+            
+            // ride type selection view
+            Text("SUGGESTED RIDES")
+                .font(.subheadline)
+                .fontWeight(.semibold)
+                .padding()
+                .foregroundColor(.gray)
+                .frame(maxWidth: .infinity, alignment: .leading)
+            
+            ScrollView(.horizontal) {
+                HStack(spacing: 12) {
+                    ForEach(0 ..< 3, id: \.self) { _ in
+                        VStack(alignment: .leading) {
+                            Image(systemName: "uber-x")
+                        }
                     }
                 }
             }
