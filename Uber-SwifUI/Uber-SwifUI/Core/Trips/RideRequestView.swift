@@ -75,8 +75,22 @@ struct RideRequestView: View {
                 HStack(spacing: 12) {
                     ForEach(0 ..< 3, id: \.self) { _ in
                         VStack(alignment: .leading) {
-                            Image(systemName: "uber-x")
+                            Image("uber-x")
+                                .resizable()
+                                .scaledToFit()
+                            
+                            VStack {
+                                Text("UberX")
+                                    .font(.system(size: 14, weight: .semibold))
+                                
+                                Text("$22.04")
+                                    .font(.system(size: 14, weight: .semibold))
+                            }
+                            .padding(8)
                         }
+                        .frame(width: 112, height: 140)
+                        .background(Color(.systemGroupedBackground))
+                        .cornerRadius(10)
                     }
                 }
             }
