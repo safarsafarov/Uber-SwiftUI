@@ -27,10 +27,11 @@ struct MapViewActionButton: View {
         .frame(maxWidth: .infinity, alignment: .leading)
     }
     
+    
     func actionForState(_ state: MapViewState) {
         switch state {
         case .noInput:
-            print("DEBUG: No input")
+            print("DEBUG: No Input")
         case .searchingForLocation:
             mapState = .noInput
         case .locationSelected:
@@ -47,7 +48,6 @@ struct MapViewActionButton: View {
         }
     }
 }
-
 
 struct MapViewActionButton_Previews: PreviewProvider {
     static var previews: some View {
