@@ -10,12 +10,12 @@ import SwiftUI
 struct LocationSearchActivationView: View {
     var body: some View {
         HStack {
-            Rectangle()
-                .fill(Color.black)
-                .frame(width: 8, height: 8)
+            Image(systemName: "magnifyingglass")
+                .foregroundColor(Color.theme.backgroundColor)
+                .frame(width: 10, height: 10)
                 .padding(.horizontal)
             
-            Text("Where to?")
+            Text("Enter Destination")
                 .foregroundColor(Color(.darkGray))
             
             Spacer()
@@ -24,9 +24,8 @@ struct LocationSearchActivationView: View {
         .background(
             Rectangle()
                 .fill(Color.white)
-                .shadow(color: .black, radius: 2)
-                .blur(radius: 2.0)
-                .cornerRadius(5)
+                .cornerRadius(6)
+                .shadow(color: .black, radius: 1)
         )
     }
 }
