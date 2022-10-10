@@ -9,56 +9,70 @@ import SwiftUI
 
 struct LocationSearchView: View {
     @State private var startLocationText = ""
-    @Binding var mapState: MapViewState
     @EnvironmentObject var viewModel: LocationSearchViewModel
+    @Binding var mapState: MapViewState
     
     var body: some View {
         VStack {
-            // Header View
+            // Header
+            // Dots
             HStack {
                 VStack {
                     Circle()
-                        .fill(Color(.systemGray3))
+                        .fill(Color(.systemBlue))
                         .frame(width: 6, height: 6)
-                    Rectangle()
-                        .fill(Color(.systemGray3))
-                        .frame(width: 6, height: 6)
-                    Rectangle()
-                        .fill(.black)
-                        .frame(width: 6, height: 6)
-                }
-                VStack {
-                    TextField("Current location", text: $startLocationText)
-                        .frame(height: 32)
-                        .background(Color(.systemGroupedBackground))
-                        .padding(.trailing)
                     
-                    TextField("Where to?", text: $viewModel.queryFragment)
-                        .frame(height: 32)
-                        .background(Color(.systemGray4))
-                        .padding(.trailing)
+                    Rectangle()
+                        .fill(Color(.systemGray3))
+                        .frame(width: 1, height: 24)
+                    
+                    Rectangle()
+                        .background(Color.theme.primaryTextColor)
+                        .frame(width: 6, height: 6)
                 }
+                // Text Fields
+                
+                VStack {
+                    
+                    TextField("", text: $startLocationText)
+                        .frame(height: 32)
+                        .padding(.trailing)
+                        .placeholder(when: startLocationText.isEmpty) {
+                            Text(" Current Location").foregroundColor(.blue)
+                                .padding(.leading, 4)
+                    }
+                    
+                    TextField(" Enter Destination", text: $viewModel.queryFragment)
+                        .frame(height: 32)
+                        .background(Color(.systemGray6))
+                        .cornerRadius(4)
+                        .padding(.trailing)
+                        .padding(.leading, 2)
+                }
+
             }
             .padding(.horizontal)
             .padding(.top, 64)
             
             Divider()
-                .padding(.vertical)
+                .padding(.vertical, 10)
             
-            // List VIew
+            // List
             ScrollView {
                 VStack(alignment: .leading) {
-                    ForEach(viewModel.results, id: \.self) {
-                        result in
+                    ForEach(viewModel.results, id: \.self) { result in
                         LocationSearchResultCell(title: result.title, subtitle: result.subtitle)
                             .onTapGesture {
-                                viewModel.selectLocation(result)
-                                mapState = .locationSelected
+                                withAnimation(.spring()) {
+                                    viewModel.selectLocation(result)
+                                    mapState = .locationSelected
+                                }
                             }
                     }
                 }
             }
         }
+        .background(Color.theme.backgroundColor)
         .background(.white)
     }
 }
@@ -66,5 +80,6 @@ struct LocationSearchView: View {
 struct LocationSearchView_Previews: PreviewProvider {
     static var previews: some View {
         LocationSearchView(mapState: .constant(.searchingForLocation))
+            .environmentObject(LocationSearchViewModel())
     }
 }

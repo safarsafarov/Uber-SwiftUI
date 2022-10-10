@@ -8,50 +8,55 @@
 import SwiftUI
 
 struct RideRequestView: View {
+    @State private var selectedRideType: RideType = .uberX
+    @EnvironmentObject var locationViewModel: LocationSearchViewModel
+    
     var body: some View {
         VStack {
             Capsule()
                 .foregroundColor(Color(.systemGray5))
                 .frame(width: 48, height: 6)
+                .padding(.top, 8)
             
-            // Trip info view
+            // Trip info
             HStack {
                 VStack {
                     Circle()
                         .fill(Color(.systemGray3))
-                        .frame(width: 6, height: 6)
+                        .frame(width: 8, height: 8)
                     
                     Rectangle()
                         .fill(Color(.systemGray3))
                         .frame(width: 1, height: 32)
                     
                     Rectangle()
-                        .fill(.black)
+                        .background(Color.theme.primaryTextColor)
                         .frame(width: 8, height: 8)
                 }
                 
                 VStack(alignment: .leading, spacing: 24) {
                     HStack {
-                        Text("Current location")
-                            .font(.system(size: 16))
+                        Text("Current Location")
+                            .font(.system(size: 16, weight: .semibold))
                             .foregroundColor(.gray)
                         
                         Spacer()
                         
-                        Text("1:30 PM")
+                        Text(locationViewModel.pickupTime ?? "")
                             .font(.system(size: 14, weight: .semibold))
                             .foregroundColor(.gray)
                     }
                     .padding(.bottom, 10)
                     
                     HStack {
-                        Text("Starbucks Coffee")
-                            .font(.system(size: 16))
-                            .foregroundColor(.gray)
+                        if let location = locationViewModel.selectedUberLocation {
+                            Text(location.title)
+                                .font(.system(size: 16, weight: .semibold))
+                        }
                         
                         Spacer()
                         
-                        Text("1:45 PM")
+                        Text(locationViewModel.dropOffTime ?? "")
                             .font(.system(size: 14, weight: .semibold))
                             .foregroundColor(.gray)
                     }
@@ -60,38 +65,44 @@ struct RideRequestView: View {
             }
             .padding()
             
-            
             Divider()
             
-            // ride type selection view
-            Text("SUGGESTED RIDES")
+            // Ride type
+            Text("Suggested Rides")
                 .font(.subheadline)
                 .fontWeight(.semibold)
                 .padding()
-                .foregroundColor(.gray)
+                .foregroundColor(Color(.gray))
                 .frame(maxWidth: .infinity, alignment: .leading)
             
             ScrollView(.horizontal) {
                 HStack(spacing: 12) {
-                    ForEach(0 ..< 3, id: \.self) { _ in
+                    ForEach(RideType.allCases) { type in
                         VStack(alignment: .leading) {
-                            Image("uber-x")
+                            Image(type.imageName)
                                 .resizable()
                                 .scaledToFit()
                             
-                            VStack {
-                                Text("UberX")
+                            VStack(alignment: .leading, spacing: 4) {
+                                Text(type.description)
                                     .font(.system(size: 14, weight: .semibold))
                                 
-                                Text("$22.04")
+                                Text(locationViewModel.computeRidePrice(forType: type).toCurrency())
                                     .font(.system(size: 14, weight: .semibold))
                             }
                             .padding(8)
                         }
+                        .frame(width: 112, height: 140)
+                        .foregroundColor(type == selectedRideType ? .white : Color.theme.primaryTextColor)
+                        .background(type == selectedRideType ? .blue : Color.theme.secondaryBackgroundColor)
+                        .scaleEffect(type == selectedRideType ? 1.08 : 1.0)
+                        .cornerRadius(10)
+                        .onTapGesture {
+                            withAnimation(.spring()) {
+                                selectedRideType = type
+                            }
+                        }
                     }
-                    .frame(width: 112, height: 140)
-                    .background(Color(.systemGroupedBackground))
-                    .cornerRadius(10)
                 }
             }
             .padding(.horizontal)
@@ -99,9 +110,9 @@ struct RideRequestView: View {
             Divider()
                 .padding(.vertical, 8)
             
-            // payment option view
+            // Payment
             HStack(spacing: 12) {
-                Text("Visa")
+               Text("Visa")
                     .font(.subheadline)
                     .fontWeight(.semibold)
                     .padding(6)
@@ -110,7 +121,7 @@ struct RideRequestView: View {
                     .foregroundColor(.white)
                     .padding(.leading)
                 
-                Text("**** 1234")
+                Text("*** 1234")
                     .fontWeight(.bold)
                 
                 Spacer()
@@ -120,19 +131,26 @@ struct RideRequestView: View {
                     .padding()
             }
             .frame(height: 50)
-            .background(Color(.systemGroupedBackground))
+            .background(Color.theme.secondaryBackgroundColor)
             .cornerRadius(10)
             .padding(.horizontal)
             
-            // request ride button
+            // Request Ride
             Button {
                 
             } label: {
-                Text("CONFIRM RIDE")
+                Text("Confirm Ride")
                     .fontWeight(.bold)
                     .frame(width: UIScreen.main.bounds.width - 32, height: 50)
+                    .background(.blue)
+                    .cornerRadius(10)
+                    .foregroundColor(.white)
+                
             }
         }
+        .padding(.bottom, 24)
+        .background(Color.theme.backgroundColor)
+        .cornerRadius(12)
     }
 }
 
